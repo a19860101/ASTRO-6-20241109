@@ -1,0 +1,20 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    background-color: #989;
+}
+nav {
+    width: 100%;
+    padding: 15px;
+    background-color: #098;
+}
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+main {
+    width: 1200px;
+    margin: auto;
+}
