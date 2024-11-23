@@ -1,4 +1,5 @@
 * {
+    box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
@@ -10,9 +11,9 @@ nav {
     text-align: center;
     text-transform: uppercase;
 }
-nav a {
+.nav-link {
     text-decoration: none;
-    color: #fff;
+    color: #00114e;
     margin: 0 7px;
 }
 header {
@@ -29,8 +30,15 @@ main {
 }
 footer {
     width: 100%;
+    padding-inline: 15px;
     padding-block: 15px;
     background-color: #222;
     color: #eee;
     text-align: center;
+    display: flex;
+    justify-content: space-between;
+}
+footer a {
+    color: #eee;
+    text-transform: capitalize;
 }
