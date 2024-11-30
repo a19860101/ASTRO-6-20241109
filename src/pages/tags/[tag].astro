@@ -1,0 +1,32 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+const allPosts = await Astro.glob('../blog/posts/*.md');
+
+export async function getStaticPaths(){
+    return [
+        {params:{tag: 'baseball'}},
+        {params:{tag: 'premiere 12'}}
+        // {params:{tag: 'baseball'},props: { posts: allPosts}},
+        // {params:{tag: 'premiere 12'},props: { posts: allPosts}}
+    ]
+}
+
+const {posts} = Astro.props
+const {tag} = Astro.params
+
+const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
+
+
+---
+<BaseLayout title={tag}>
+    <div>
+        {tag} 文章
+        <!-- {allPosts}  -->
+    </div>
+    <div>
+        <!-- {allPosts.map(p=>p.frontmatter.title)} -->
+    </div>
+    <ul>
+        {filterPosts.map(p=><li>{p.frontmatter.title}</li>)}
+    </ul>
+</BaseLayout>
