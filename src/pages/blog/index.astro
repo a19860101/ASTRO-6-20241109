@@ -1,6 +1,31 @@
 ---
+import PostCard from "../../components/PostCard.astro";
 import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob('./posts/*.md')
 ---
 <BaseLayout>
-
+    <main>
+        <div class="container">
+            {
+                allPosts.map(post => 
+                    <PostCard url={post.url} data={post.frontmatter}></PostCard>
+                ).reverse()
+            }
+        </div>
+        <!-- <ul>
+            <li><a href="/blog/posts/post-1">Post 1</a></li>
+            <li><a href="/blog/posts/post-2">Post 2</a></li>
+            <li><a href="/blog/posts/post-3">Post 3</a></li>
+        </ul> -->
+    </main>
 </BaseLayout>
+<style>
+    .container {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-auto-rows: 250px;
+        gap: 15px;
+        margin-bottom: 30px;
+    }
+</style>

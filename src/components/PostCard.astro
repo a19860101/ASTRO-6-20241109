@@ -1,0 +1,39 @@
+---
+const {url, data} = Astro.props
+---
+<div class="card">
+    <a href={url}>
+        <div class="hero">
+            <img src={data.image.url} alt={data.image.alt} class="cover">
+        </div>
+        <h2>{data.title.slice(0,15)}...</h2>
+        <div>
+            {
+                data.tags.map(t=><span class="tag">{t}</span>)
+            }
+        </div>
+    </a>
+</div>  
+<style>
+    .tag {
+        display: inline-block;
+        /* padding: 10px; */
+        background-color: #fa0;
+    }
+    .card {
+            background-color: #e8e8e8;
+            border-radius:  10px;
+            overflow: hidden;
+    }
+    .hero {
+        aspect-ratio: 16 / 9;
+        margin-bottom: 15px;
+    }
+    a {
+        text-decoration: none;
+        color: #222;
+    }
+    h2 {
+        padding-inline: 15px;
+    }
+</style>

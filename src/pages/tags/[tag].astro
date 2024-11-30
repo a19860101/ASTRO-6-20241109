@@ -1,0 +1,25 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const allPosts = await Astro.glob('../blog/posts/*.md')
+
+export async function getStaticPaths(){
+    return [
+        {params: {tag: '棒球'}},
+        {params: {tag: 'premiere 12'}},
+        {params: {tag: '蔡其昌'}},
+        {params: {tag: '東京巨蛋'}},
+    ]
+}
+const {tag} = Astro.params
+
+const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
+---
+<BaseLayout title={tag}>
+    <div>
+        標籤為 {tag} 的文章
+    </div>
+    <div>
+        {filterPosts}
+    </div>
+</BaseLayout>
