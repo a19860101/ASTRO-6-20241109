@@ -1,0 +1,24 @@
+---
+const {url,title,image} = Astro.props;
+---
+<div>
+    <script>
+    </script>
+    <div class="hero">
+        <img src={image??'https://picsum.photos/id/22/1600/900'} alt="">
+    </div>
+    <a href={url}>
+        <h2>{title.toString().slice(0,30)}...</h2>
+    </a>
+</div>
+<style>
+    .hero {
+        width: 100%;
+        aspect-ratio: 16/9;
+        img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    }
+</style>
