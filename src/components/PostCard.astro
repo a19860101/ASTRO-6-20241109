@@ -1,4 +1,5 @@
 ---
+import Tag from "./Tag.astro"
 const {url, data} = Astro.props
 ---
 <div class="card">
@@ -6,11 +7,9 @@ const {url, data} = Astro.props
         <div class="hero">
             <img src={data.image.url} alt={data.image.alt} class="cover">
         </div>
-        <h2>{data.title.slice(0,15)}...</h2>
-        <div>
-            {
-                data.tags.map(t=><span class="tag">{t}</span>)
-            }
+        <div class="card-body">
+            <h2>{data.title.slice(0,15)}...</h2> 
+            <div>更新日期{data.pubDate.slice(0,10)}</div>
         </div>
     </a>
 </div>  
@@ -33,7 +32,7 @@ const {url, data} = Astro.props
         text-decoration: none;
         color: #222;
     }
-    h2 {
-        padding-inline: 15px;
+    .card-body {
+        padding: 15px;
     }
 </style>

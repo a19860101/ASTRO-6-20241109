@@ -7,7 +7,7 @@ description: '2024年世界棒球12強賽複賽第二戰，中華隊發揮火力
 image: 
     url: '/images/01.jpeg'
     alt: '島'
-tags: ['棒球','premiere 12','東京巨蛋']
+tags: ['棒球','premiere 12','東京巨蛋','標籤測試']
 
 ---
 ***

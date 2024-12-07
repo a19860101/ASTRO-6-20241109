@@ -1,0 +1,30 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro"
+import TagWrapper from "../../components/TagWrapper.astro"
+const allPosts = await Astro.glob('../blog/posts/*.md')
+const tags = [...new Set(allPosts.map(post=>post.frontmatter.tags).flat())]
+
+---
+<BaseLayout>
+    <main>
+        <TagWrapper />
+    </main>
+</BaseLayout>
+
+<script>
+// const posts = ['aaa','bbb','ccc','bbb','ccc',['111','222','222','333']]
+// const uniqueTags = [...new Set(posts.map(post=>post).flat())]
+//     console.log(uniqueTags)
+
+// const s = [111,222,333,333,333,444,444,555];
+// const s_set = new Set(s)
+// console.log(s_set)
+// const s_array = Array.from(s_set)
+// const s_array =[...s_set];
+// console.log(s_array)
+
+// console.log(s.includes(777));
+// const s_filter = s_array.filter(data => data === 333);
+// console.log(s_filter);
+
+</script>

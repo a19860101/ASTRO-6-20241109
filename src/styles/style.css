@@ -27,6 +27,7 @@ header img {
 main {
     width: 800px;
     margin: auto;
+    padding-bottom: 300px;
 }
 img {
     width: 100%;
@@ -49,4 +50,21 @@ footer {
 footer a {
     color: #eee;
     text-transform: capitalize;
+}
+
+/* 麵包屑breadcrumb */
+.breadcrumb {
+    background-color: #e7e7e7;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    padding: 10px;
+    b {
+        color: #b8002e;
+    }
+}
+.tag-wrapper {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
 }

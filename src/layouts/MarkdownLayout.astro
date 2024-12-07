@@ -1,4 +1,5 @@
 ---
+import Tag from "../components/Tag.astro";
 import BaseLayout from "./BaseLayout.astro";
 const {frontmatter} = Astro.props;
 ---
@@ -8,9 +9,10 @@ const {frontmatter} = Astro.props;
     </div>
     <h1>{frontmatter.title}</h1>
     <div class="author">作者：{frontmatter.author}</div>
-    <div>
-        #{frontmatter.tags.join(',#')}
+    <div class="tag-wrapper">
+        {frontmatter.tags.map(tag=><Tag tag={tag}></Tag>)}
     </div>
+    <br>
     <div class="content">
         <slot />
     </div>

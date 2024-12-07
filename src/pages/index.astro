@@ -1,12 +1,48 @@
 ---
+import PostCard from '../components/PostCard.astro'
+import TagWrapper from '../components/TagWrapper.astro'
 import BaseLayout from '../layouts/BaseLayout.astro'
+const allPosts = await Astro.glob('./blog/posts/*.md')
+// 升冪 遞增 舊的在前
+// allPosts.sort((a,b) => a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) || b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate))
+// 降冪 遞減 新的在前
+allPosts.sort((b,a) => a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) || b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate))
+
 
 ---
 <BaseLayout title="HOME">
 	<header>
 		<img src="https://picsum.photos/id/0/800/600" alt="">
 	</header>
+	<main>
+		<TagWrapper />
+		<br>
+		<div class="container">
+			{allPosts.map(post=><PostCard url={post.url} data={post.frontmatter}></PostCard>)}
+		</div>
+	</main>
 </BaseLayout>
+<style>
+	.container {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 20px;
+	}
+</style>
+<script>
+	// const arr = [111,666,222,888,999,333];
+	// console.log(arr.sort().reverse());
+	// const s = arr.sort((a,b)=> a-b)
+
+	const d = ['2024-12-07','2025-01-01','2024-11-10'];
+
+	//遞增
+	// const s = d.sort((a,b) => a.localeCompare(b) || b.localeCompare(a));
+	// 遞減
+	// const s = d.sort((a,b) => b.localeCompare(a) || a.localeCompare(b));
+
+	// console.log(s);
+</script>
 
 
 
