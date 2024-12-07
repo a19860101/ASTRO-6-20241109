@@ -1,6 +1,7 @@
 ---
-import BaseLayout from "./BaseLayout.astro";
-const {frontmatter} = Astro.props;
+import BaseLayout from "./BaseLayout.astro"
+import Tag from "../components/Tag.astro"
+const {frontmatter} = Astro.props
 ---
 <BaseLayout title={frontmatter.title} desc={frontmatter.description}>
     <main>
@@ -9,6 +10,7 @@ const {frontmatter} = Astro.props;
         </div>
         <h1>{frontmatter.title}</h1>
         <div>作者：{frontmatter.author}</div>
+        <div>{frontmatter.tags}</div>
         <div>{frontmatter.pubDate.slice(0,10)}</div>
         <div class="content">
             <slot />
