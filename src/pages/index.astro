@@ -1,12 +1,59 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro'
+import Tag from '../components/Tag.astro'
+import { date } from 'astro:schema'
 
+
+const allPosts = await (Astro.glob('./blog/posts/*.md'))
+allPosts.sort((a,b)=> b.frontmatter.pubDate.localeCompare(a.frontmatter.pubDate) || a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate) )
+const tags = [...new Set(allPosts.map(post=>post.frontmatter.tags).flat())]
+
+// const ddd = [222,333,111,555,666]
+
+const ddd = ['2024-10-19','2024-12-01','2024-11-28']
+// const t = ddd.sort((a,b)=>a.valueOf() - b.valueOf());
+
+
+// const newPosts = allPosts.map(p=>p.frontmatter.pubDate)
 ---
 <BaseLayout title="HOME">
 	<header>
 		<img src="https://picsum.photos/id/0/800/600" alt="">
 	</header>
+	<main>
+		<h2>HashTag</h2>
+		<div>
+			{tags.map(t=><Tag tag={t}></Tag>)}
+		</div>
+		<div>
+			{
+				// ddd.sort((a,b)=>a.localeCompare(b)||b.localeCompare(a))
+				// ddd.sort((a,b)=>b.localeCompare(a)||a.localeCompare(b))
+			}
+			{
+
+			}
+			<div class="container">
+
+				{
+					allPosts.map(p=><div>{p.frontmatter.title}</div>).slice(0,3)
+				} 
+			</div>
+			<!-- {t} -->
+		</div>
+	</main>
 </BaseLayout>
+<style>
+	.container {
+		display: grid;
+		grid-template-columns: repeat(3,1fr);
+		gap: 15px;
+	}
+	.container>*{
+		background-color: #ccc;
+
+	}
+</style>
 
 
 

@@ -1,20 +1,32 @@
 ---
+import PostCard from '../../components/PostCard.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
-const allPosts = await Astro.glob('../blog/posts/*.md');
 
 export async function getStaticPaths(){
-    return [
-        {params:{tag: 'baseball'}},
-        {params:{tag: 'premiere 12'}}
+    const allPosts = await Astro.glob('../blog/posts/*.md');
+    const uniqueTags = [...new Set(allPosts.map(p=>p.frontmatter.tags).flat())]
+
+    // return [
+        // {params:{tag: 'baseball'}},
+        // {params:{tag: 'premiere 12'}}
         // {params:{tag: 'baseball'},props: { posts: allPosts}},
         // {params:{tag: 'premiere 12'},props: { posts: allPosts}}
-    ]
+    // ]
+    return uniqueTags.map(tag=>{
+        const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
+        return {
+            params: {tag},
+            props: {posts: filterPosts}
+        }
+    })
 }
+
+
 
 const {posts} = Astro.props
 const {tag} = Astro.params
 
-const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
+// const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
 
 
 ---
@@ -26,7 +38,20 @@ const filterPosts = allPosts.filter(post=>post.frontmatter.tags.includes(tag))
     <div>
         <!-- {allPosts.map(p=>p.frontmatter.title)} -->
     </div>
-    <ul>
-        {filterPosts.map(p=><li>{p.frontmatter.title}</li>)}
-    </ul>
+    <div class="container">
+        <!-- {filterPosts.map(p=><li>{p.frontmatter.title}</li>)} -->
+        <!-- {posts.map(p=><li>{p.frontmatter.title}</li>)} -->
+        {
+            posts.map(p=><PostCard url={p.url} title={p.frontmatter.title} image={p.frontmatter.image.url}></PostCard>)
+        }
+    </div>
 </BaseLayout>
+<style>
+    .container {
+        display: grid;
+        width: 1200px;
+        grid-template-columns: repeat(3,1fr);
+        gap: 15px;
+        margin: auto;
+    }
+</style>
