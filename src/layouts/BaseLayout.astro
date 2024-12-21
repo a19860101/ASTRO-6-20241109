@@ -2,6 +2,7 @@
 // import '../styles/style.css'
 import Nav from '../components/Nav.astro'
 import Footer from '../components/Footer.astro'
+import { ViewTransitions } from 'astro:transitions'
 // const title = 'My First Astro Project'
 const { 
     title='DEFAULT',
@@ -17,6 +18,7 @@ const {
     <meta name="description" content={desc}>
     <title>LCC WEB - {title}</title>
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <ViewTransitions />
 </head>
 <body>
     <!-- <Nav></Nav> -->

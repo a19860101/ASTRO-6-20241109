@@ -2,7 +2,7 @@
 import Tag from "./Tag.astro"
 const {url, data} = Astro.props
 ---
-<div class="bg-zinc-200 rounded-lg overflow-hidden">
+<div class="bg-zinc-200 rounded-lg overflow-hidden hover:shadow-md duration-300 ring-2 hover:ring-offset-8 ring-transparent hover:ring-amber-300">
     <a href={url}>
         <div class="aspect-video">
             <img src={data.image.url} alt={data.image.alt} class="w-full h-full object-cover">
