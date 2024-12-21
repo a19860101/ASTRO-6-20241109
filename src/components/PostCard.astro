@@ -8,7 +8,7 @@ const {url, data} = Astro.props
             <img src={data.image.url} alt={data.image.alt} class="w-full h-full object-cover">
         </div>
         <div class="p-4">
-            <h2 class="text-2xl font-bold">{data.title.slice(0,15)}...</h2> 
+            <h2 class="text-lg sm:text-2xl font-bold">{data.title.slice(0,15)}...</h2> 
             <div>更新日期{data.pubDate.slice(0,10)}</div>
         </div>
     </a>

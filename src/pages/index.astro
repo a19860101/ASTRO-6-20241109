@@ -16,7 +16,7 @@ allPosts.sort((b,a) => a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate
 	</header>
 	<main>
 		<TagWrapper />
- 		<div class="container mx-auto grid grid-cols-2 gap-5">
+ 		<div class="w-full mx-auto grid grid-cols-2 gap-5">
 			{allPosts.map(post=><PostCard url={post.url} data={post.frontmatter}></PostCard>)}
 		
 		</div>
