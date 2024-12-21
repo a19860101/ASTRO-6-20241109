@@ -2,18 +2,18 @@
 import Tag from "./Tag.astro"
 const {url, data} = Astro.props
 ---
-<div class="card">
+<div class="bg-zinc-200 rounded-lg overflow-hidden">
     <a href={url}>
-        <div class="hero">
-            <img src={data.image.url} alt={data.image.alt} class="cover">
+        <div class="aspect-video">
+            <img src={data.image.url} alt={data.image.alt} class="w-full h-full object-cover">
         </div>
-        <div class="card-body">
-            <h2>{data.title.slice(0,15)}...</h2> 
+        <div class="p-4">
+            <h2 class="text-2xl font-bold">{data.title.slice(0,15)}...</h2> 
             <div>更新日期{data.pubDate.slice(0,10)}</div>
         </div>
     </a>
 </div>  
-<style>
+<!-- <style>
     .tag {
         display: inline-block;
         /* padding: 10px; */
@@ -35,4 +35,4 @@ const {url, data} = Astro.props
     .card-body {
         padding: 15px;
     }
-</style>
+</style> -->

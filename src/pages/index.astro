@@ -11,24 +11,24 @@ allPosts.sort((b,a) => a.frontmatter.pubDate.localeCompare(b.frontmatter.pubDate
 
 ---
 <BaseLayout title="HOME">
-	<header>
+	<header class="mb-5">
 		<img src="https://picsum.photos/id/0/800/600" alt="">
 	</header>
 	<main>
 		<TagWrapper />
-		<br>
-		<div class="container">
+ 		<div class="container mx-auto grid grid-cols-2 gap-5">
 			{allPosts.map(post=><PostCard url={post.url} data={post.frontmatter}></PostCard>)}
+		
 		</div>
 	</main>
 </BaseLayout>
-<style>
+<!-- <style>
 	.container {
 		display: grid;
 		grid-template-columns: repeat(2, 1fr);
 		gap: 20px;
 	}
-</style>
+</style> -->
 <script>
 	// const arr = [111,666,222,888,999,333];
 	// console.log(arr.sort().reverse());
